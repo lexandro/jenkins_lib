@@ -11,8 +11,10 @@ import javaposse.jobdsl.dsl.helpers.step.*
  *     }
  *   }
  */
-StepContext.metaClass.dockerBuild = { String serverUri, String serverCredentialsId,
-                                      String registryUrl, String registryCredentialsId,
+StepContext.metaClass.dockerBuild = { String serverUri,
+                                      String serverCredentialsId,
+                                      String registryUrl,
+                                      String registryCredentialsId,
                                       String repoName,
                                       String repoTag,
                                       Boolean skipPush,
