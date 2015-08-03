@@ -27,7 +27,7 @@ import javaposse.jobdsl.dsl.helpers.triggers.TriggerContext
  */
 TriggerContext.metaClass.stashPullRequestBuilder = { String cron,
                                                      String stashHost,
-                                                     String userName,
+                                                     String username,
                                                      String password,
                                                      String projectCode,
                                                      String repositoryName,
@@ -41,7 +41,7 @@ TriggerContext.metaClass.stashPullRequestBuilder = { String cron,
         'spec' cron
         'cron' cron
         'stashHost' stashHost
-        'userName' userName
+        'username' username
         'password' password
         'projectCode' projectCode
         'repositoryName' repositoryName
