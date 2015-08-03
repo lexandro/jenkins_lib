@@ -6,7 +6,7 @@ import javaposse.jobdsl.dsl.helpers.triggers.TriggerContext
  *
  * Example:
  *
- * job('dockerBuildJob') {
+ * job('PRTestJob') {
  *   triggers {
  *       stashPullRequestBuilder ('tcp://docker.host.test',
  *               'docker_host',
@@ -25,16 +25,22 @@ import javaposse.jobdsl.dsl.helpers.triggers.TriggerContext
  *    }
  * }
  */
-TriggerContext.metaClass.stashPullRequestBuilder = { String cron
-                                                      ->
+TriggerContext.metaClass.stashPullRequestBuilder = { String cron,
+                                                     String stashHost,
+                                                     String username,
+                                                     String password,
+                                                     String projectCode,
+                                                     String repositoryName,
+                                                     String ciBuildPhrases,
+
+                                                     Boolean checkDestinationCommit,
+                                                     Boolean checkMergeable,
+                                                     Boolean checkNotConflicted,
+                                                     Boolean onlyBuildOnComment ->
     stepNodes << new NodeBuilder().'stashpullrequestbuilder.stashpullrequestbuilder.StashBuildTrigger' {
         'spec' cron
         'cron' cron
-
-
-    }
-    /*
-     'stashHost' stashHost
+        'stashHost' stashHost
         'username' username
         'password' password
         'projectCode' projectCode
@@ -45,6 +51,7 @@ TriggerContext.metaClass.stashPullRequestBuilder = { String cron
         'checkMergeable' checkMergeable
         'checkNotConflicted' checkNotConflicted
         'onlyBuildOnComment' onlyBuildOnComment
-     */
+
+    }
 }
 
