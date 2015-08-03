@@ -1,6 +1,4 @@
 import javaposse.jobdsl.dsl.helpers.step.*
-import javaposse.jobdsl.dsl.RequiresPlugin
-
 
 /*
  * Simple PoC method that take a string and a number and add and echo shell command as job step.
@@ -26,7 +24,6 @@ import javaposse.jobdsl.dsl.RequiresPlugin
  *    }
  * }
  */
-@RequiresPlugin(id = 'docker-build-publish')
 StepContext.metaClass.dockerBuild = { String serverUri,
                                       String serverCredentialsId,
                                       String registryUrl,
