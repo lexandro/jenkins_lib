@@ -1,6 +1,5 @@
 import javaposse.jobdsl.dsl.helpers.triggers.TriggerContext
 
-
 /*
  * Simple PoC method that take a string and a number and add and echo shell command as job step.
  *
@@ -25,33 +24,32 @@ import javaposse.jobdsl.dsl.helpers.triggers.TriggerContext
  *    }
  * }
  */
-TriggerContext.metaClass.stashPullRequestBuilder = { String cron,
-                                                     String stashHost,
-                                                     String username,
-                                                     String password,
-                                                     String projectCode,
-                                                     String repositoryName,
-                                                     String ciBuildPhrases,
+TriggerContext.metaClass.stashPullRequestBuilder = { String cronData,
+                                                     String stashHostUrl,
+                                                     String userName,
+                                                     String userPassword,
+                                                     String projectCodeTLA,
+                                                     String repoName,
+                                                     String buildPhrase,
 
-                                                     Boolean checkDestinationCommit,
-                                                     Boolean checkMergeable,
-                                                     Boolean checkNotConflicted,
-                                                     Boolean onlyBuildOnComment ->
+                                                     Boolean chkDestinationCommit,
+                                                     Boolean chkMergeable,
+                                                     Boolean chkNotConflicted,
+                                                     Boolean onlyBuildOnCommentFlag ->
     triggerNodes << new NodeBuilder().'stashpullrequestbuilder.stashpullrequestbuilder.StashBuildTrigger' {
-        'spec' cron
-        'cron' cron
-        'stashHost' stashHost
-        'username' username
-        'password' password
-        'projectCode' projectCode
-        'repositoryName' repositoryName
-        'ciBuildPhrases' ciBuildPhrases
+        'spec' cronData
+        'cron' cronData
+        'stashHost' stashHostUrl
+        'username' userName
+        'password' userPassword
+        'projectCode' projectCodeTLA
+        'repositoryName' repoName
+        'ciBuildPhrases' buildPhrase
 
-        'checkDestinationCommit' checkDestinationCommit
-        'checkMergeable' checkMergeable
-        'checkNotConflicted' checkNotConflicted
-        'onlyBuildOnComment' onlyBuildOnComment
-
+        'checkDestinationCommit' chkDestinationCommit
+        'checkMergeable' chkMergeable
+        'checkNotConflicted' chkNotConflicted
+        'onlyBuildOnComment' onlyBuildOnCommentFlag
     }
 }
 
