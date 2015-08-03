@@ -25,22 +25,16 @@ import javaposse.jobdsl.dsl.helpers.triggers.TriggerContext
  *    }
  * }
  */
-TriggerContext.metaClass.stashPullRequestBuilder = { String cron,
-                                                     String stashHost,
-                                                     String username,
-                                                     String password,
-                                                     String projectCode,
-                                                     String repositoryName,
-                                                     String ciBuildPhrases,
-
-                                                     Boolean checkDestinationCommit,
-                                                     Boolean checkMergeable,
-                                                     Boolean checkNotConflicted,
-                                                     Boolean onlyBuildOnComment ->
+TriggerContext.metaClass.stashPullRequestBuilder = { String cron
+                                                      ->
     stepNodes << new NodeBuilder().'stashpullrequestbuilder.stashpullrequestbuilder.StashBuildTrigger' {
         'spec' cron
         'cron' cron
-        'stashHost' stashHost
+
+
+    }
+    /*
+     'stashHost' stashHost
         'username' username
         'password' password
         'projectCode' projectCode
@@ -51,7 +45,6 @@ TriggerContext.metaClass.stashPullRequestBuilder = { String cron,
         'checkMergeable' checkMergeable
         'checkNotConflicted' checkNotConflicted
         'onlyBuildOnComment' onlyBuildOnComment
-
-    }
+     */
 }
 
