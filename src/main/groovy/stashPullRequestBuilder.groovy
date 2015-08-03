@@ -37,7 +37,7 @@ TriggerContext.metaClass.stashPullRequestBuilder = { String cron,
                                                      Boolean checkMergeable,
                                                      Boolean checkNotConflicted,
                                                      Boolean onlyBuildOnComment ->
-    stepNodes << new NodeBuilder().'stashpullrequestbuilder.stashpullrequestbuilder.StashBuildTrigger' {
+    triggerNodes << new NodeBuilder().'stashpullrequestbuilder.stashpullrequestbuilder.StashBuildTrigger' {
         'spec' cron
         'cron' cron
         'stashHost' stashHost
