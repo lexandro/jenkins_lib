@@ -1,4 +1,5 @@
 import javaposse.jobdsl.dsl.helpers.step.*
+import javaposse.jobdsl.dsl.RequiresPlugin
 
 
 /*
@@ -25,6 +26,7 @@ import javaposse.jobdsl.dsl.helpers.step.*
  *    }
  * }
  */
+@RequiresPlugin(id = 'docker-build-publish')
 StepContext.metaClass.dockerBuild = { String serverUri,
                                       String serverCredentialsId,
                                       String registryUrl,
